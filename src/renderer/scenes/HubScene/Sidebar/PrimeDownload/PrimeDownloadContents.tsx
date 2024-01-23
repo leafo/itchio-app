@@ -5,6 +5,7 @@ import { formatTask, taskIcon } from "common/format/operation";
 import { Dispatch, ProgressInfo, TaskName } from "common/types";
 import { ambientWind } from "common/util/navigation";
 import React from "react";
+import { _ } from "renderer/t";
 import DownloadProgressSpan from "renderer/basics/DownloadProgressSpan";
 import Icon from "renderer/basics/Icon";
 import IconButton from "renderer/basics/IconButton";
@@ -93,6 +94,8 @@ class PrimeDownloadContents extends React.PureComponent<Props> {
     const { game } = this.props;
     return (
       <PrimeDownloadDiv
+        role="region"
+        aria-label={_("region.prime_download")}
         onClick={this.onMainClick}
         onContextMenu={this.onContextMenu}
       >
@@ -166,7 +169,7 @@ class PrimeDownloadContents extends React.PureComponent<Props> {
       <>
         <ProgressContainer>
           {caveId ? (
-            <IconButton icon="play2" enormous />
+            <IconButton icon="play2" aria-label={_("icon.play")} enormous />
           ) : (
             <LoadingCircle progress={progress.progress} huge />
           )}

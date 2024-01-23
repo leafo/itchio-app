@@ -15,6 +15,7 @@ import StandardGameCover, {
   standardCoverWidth,
 } from "renderer/pages/common/StandardGameCover";
 import styled from "renderer/styles";
+import { _ } from "renderer/t";
 
 const Spacer = styled.div`
   flex-basis: 16px;
@@ -48,7 +49,11 @@ class BrowserContextGame extends React.PureComponent<Props> {
     const { game, status } = this.props;
 
     return (
-      <BrowserContextDiv onContextMenu={this.onContextMenu}>
+      <BrowserContextDiv
+        role="region"
+        aria-label={_("region.game")}
+        onContextMenu={this.onContextMenu}
+      >
         <SmallerGameCover game={game} showInfo={false} />
         <Spacer />
         <GameStats game={game} status={status} />
@@ -60,6 +65,7 @@ class BrowserContextGame extends React.PureComponent<Props> {
           huge
           emphasized
           icon="cog"
+          hint={_("icon.manage")}
           onClick={this.onManage}
         />
       </BrowserContextDiv>
